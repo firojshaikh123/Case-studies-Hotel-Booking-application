@@ -1,0 +1,169 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="col-sm-6">
+            <a class="navbar-brand" href="home">Home</a>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-outline-success my-2 my-sm-0 float-right"
+                style="margin-left: 10px;">Login</button> &nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success my-2 my-sm-0 float-right">Register</button>
+        </div>
+    </nav>
+<div class="container">
+    <h4>1. Review your booking</h4>
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="assets/image/{{data_hotelImageInput}}" class="img-responsive"
+                style="width:100%" alt="Image">
+        </div>
+        <div class="col-sm-8 booking-rightpannel">
+            <form>
+                <div class="form-group">
+                    <h4>{{data_hotelNameInput}}</h4>
+                    <h6 style="color: gray">{{data_locationNameInput}}, {{data_cityNameeInput}}</h6>
+                </div>
+                <div class="form-group">
+                    <h6>Your stay includes:</h6>
+                    <ul>
+                        <li>24X7 Security</li>
+                        <li>Free Wifi</li>
+                        <li>Breakfast</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label for="exampleInputEmail1">Check-In</label><br>
+                        <span class="badge badge-warning">{{data_checkInInput}}</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="exampleInputEmail1">Check-Out</label><br>
+                        <span class="badge badge-warning">{{data_checkOutInput}}</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="exampleInputEmail1">Room Type</label><br>
+                        <span class="badge badge-warning">{{data_roomTypeInput}}</span>
+                    </div>
+                    <div class="col-sm-3">
+                        Booking & Cancellation Policy
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-sm-6">
+
+        </div>
+        <div class="col-sm-6">
+            <ul class="list-group">
+                <li class="list-group-item">Room Charges <span
+                        class="badge float-right">{{data_Price|currency:'INR'}}</span></li>
+                <li class="list-group-item">Discount <span class="badge float-right">₹0</span></li>
+                <li class="list-group-item"><b>A. SubTotal</b> <span
+                        class="badge float-right">{{data_Price + 0 |currency:'INR'}} </span></li>
+                <li class="list-group-item">GST on Room Charges <span class="badge float-right">₹246</span></li>
+                <li class="list-group-item">Convenience Fees <span class="badge float-right">₹181</span></li>
+                <li class="list-group-item"><b>B. Taxes & Fees</b> <span
+                        class="badge float-right">{{246 + 181 |currency:'INR'}}</span></li>
+                <li class="list-group-item">Pay Now (A+B) <span
+                        class="badge float-right">{{data_Price + 246 + 181 |currency:'INR'}}</span>
+                </li>
+                <li class="list-group-item" style="color: green"><b>Total</b> <span
+                        class="badge float-right">{{data_Price + 246 + 181 |currency:'INR'}}</span></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <h4>2. Guest Details</h4>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+            <div class="row">
+                <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+
+                            <div>
+                                <label for="username">First Name</label>
+                            </div>
+                            <div>
+                                <input #username="ngModel" type="text"
+                                    [class.is-invalid]="username.invalid && username.touched" class="form-control"
+                                    id="username" name="username" required [(ngModel)]="userModel.FirstName">
+                                <small class="text-danger" [class.d-none]="username.untouched || username.valid">Please
+                                    enter
+                                    name</small>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+
+                            <div> <label for="Lastname">Last Name</label></div>
+                            <div> <input #Lastname="ngModel" type="text"
+                                    [class.is-invalid]="Lastname.invalid && Lastname.touched" class="form-control"
+                                    id="Lastname" name="Lastname" required [(ngModel)]="userModel.LastName">
+                                <small class="text-danger" [class.d-none]="Lastname.untouched || Lastname.valid">Please
+                                    enter last name</small>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div> <label for="Email">Email</label></div>
+                            <div> <input type="text" class="form-control" id="Email" [(ngModel)]="userModel.Email"
+                                    name="Email"></div>
+
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="Phone">Phone</label>
+                            <input type="number" class="form-control" required pattern="^\d{10}$" #phone="ngModel"
+                                [class.is-invalid]="phone.invalid && phone.touched" id="Phone"
+                                [(ngModel)]="userModel.ContactNo" name="Phone">
+                            <div *ngIf="phone.errors && (phone.touched || phone.valid)">
+                                <small class="text-danger" [class.d-none]="!phone.errors.required">Please enter
+                                    number</small>
+                                <small class="text-danger" [class.d-none]="!phone.errors.pattern">number is
+                                    invalid</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Pay Now" class="btn btn-primary" [disabled]="!userForm.valid">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>Hotel Policies you should know</h3>
+
+        <div class="_HotelPolicies appendBottom20">
+            <p><span
+                    title="According to government regulations, a valid Photo ID has to be carried by every person above the age of 18 staying at Pride Plaza Hotel Aerocity New Delhi. The identification proofs accepted are Drivers License, Voters Card, Passport, Ration Card. Without valid ID the guest will not be allowed to check in.The primary guest checking in to the hotel must be at least 18 years of age.Early check-in or late check-out is subject to availability and may be chargeable by Pride Plaza Hotel Aerocity New Delhi. The standard check-in time is 2 PM and the standard check-out time is 12 PM. After booking you will be sent an email confirmation with hotel phone number. You can contact the hotel directly for early check-in or late check-out.The room tariff includes all taxes. The amount paid for the room does not include charges for optional services and facilities (such as room service, mini bar, snacks or telephone calls). These will be charged at the time of check-out from the Hotel.MakeMyTrip will not be responsible for any check-in denied by the Hotel due to the aforesaid reason. Pride Plaza Hotel Aerocity New Delhi reserves the right of admission. Accommodation can be denied to guests posing as a 'couple' if suitable proof of identification is not presented at check-in.MakeMyTrip will not be responsible for any check-in denied by the Hotel due to the aforesaid reason. <br/>Pride Plaza Hotel Aerocity New Delhi reserves the right of admission for local residents. Accommodation can be denied to guests residing in the same city.MakeMyTrip will not be responsible for any check-in denied by the Hotel due to the aforesaid reason. For any update, User shall pay applicable cancellation/modification charges.Modified bookings will be subject to availability and revised booking policy of the Hotel.The cancellation/modification charges are standard and any waiver is on the hotel's discretion.Number of modifications possible on a booking will be on the discretion of MakemyTrip.<br/>Selective offers of MakeMyTrip will not be valid on a cancellation or modification of booking.Any e-coupon discount on the original booking shall be forfeited in the event of cancellation or modification.">According
+                    to government regulations, a valid Photo ID has to be carried by every person above the age of 18
+                    staying at Pride Plaza Hotel Aerocity New Delhi. The identification proofs accepted are Drivers
+                    License, Voters Card, Passport, Ration Card. Without valid ID the guest will not be allowed to check
+                    in.The primary guest checking in to the hotel must be at least 18 years of age.Early check-in
+                    o...</span><a class="appendLeft10">Read More</a></p>
+        </div>
+        <div class="donationOuter appendBottom30">
+
+            <p class="makeFlex hrtlCenter font12"><span class="checkmarkOuter makeFlex hrtlCenter"><input id="agree"
+                        type="checkbox" checked=""><label for="agree">I agree to the</label><span><span
+                            class="blueText pointer appendLeft5">Hotel booking Policy</span>, <span
+                            class="blueText pointer">Hotel Cancellation policy</span>,<a rel="noopener noreferrer"
+                            target="_blank" href="#"><span class="blueText pointer appendLeft3">Privacy
+                                Policy</span></a>,<a rel="noopener noreferrer" target="_blank" href="#"><span
+                                class="blueText pointer appendLeft3 appendRight3">User Agreement</span></a>&amp;<a
+                            rel="noopener noreferrer" target="_blank" href="#"><span
+                                class="blueText pointer appendLeft3 appendRight3">Terms of Service</span></a>of
+                        Hotel.com</span></span></p>
+        </div>
+    </div>
+    <br>
+    <p>{{output}}</p>

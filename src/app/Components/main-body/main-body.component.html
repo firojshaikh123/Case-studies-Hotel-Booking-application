@@ -1,0 +1,18 @@
+<app-navbar (_SearchModelData)="getSearchParameters($event)"></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="card text-white bg-info mb-3 col-sm-4 " *ngFor="let hotel of lstHotel">
+            <h3>{{hotel.hotel_name}}</h3>
+            <div class="card-body"><img src="assets/image/{{hotel.image_name}}" class="img-responsive" style="width:100%;height:50%"
+                    alt="Image">          
+                <h5 class="card-title">{{hotel.location_name}}, {{hotel.city_name}},{{hotel.state_name}}</h5>
+                <p class="card-title">{{hotel.facility}} <span
+                        class="badge badge-warning">{{hotel.price|currency:'INR'}}</span> </p>
+                <p class="card-text text-white">Excellent Location - Very Clean</p>
+                <input type="button" (click)="onBookingSelect(hotel.hotel_id)" class="btn btn-warning" value="Check Deal">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div *ngIf="lstHotel.length==0;then emptyList"></div>
+    <ng-template #emptyList><h3 class="text-center">No Record Found<br><br><br></h3> </ng-template>

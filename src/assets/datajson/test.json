@@ -1,0 +1,5 @@
+[
+    { "country_id": 1, "country_name": "India", "state_id": "1","state_name":"Maharastra","city_id":"2","city_name":"Pune","location_id":"1","location_name":"Hinjewadi"},
+    { "country_id": 1, "country_name": "India", "state_id": "1","state_name":"Maharastra","city_id":"2","city_name":"Pune","location_id":"2","location_name":"Wakad"},
+    { "country_id": 1, "country_name": "India", "state_id": "2","state_name":"Madhaya Pradesh","city_id":"3","city_name":"Indore","location_id":"3","location_name":"Vijay Nagar"}
+]

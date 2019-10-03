@@ -1,0 +1,6 @@
+[
+    { "hotel_id": 1, "country_id": 1, "state_id": 1,"city_id":"2","location_id":"1","location_name":"Hinjewadi","hotel_name":"Hotel Femina","image_name":"hotel1.png","Price":"1055","facility":"Complementry Breakfast","city_name":"Pune"},
+    { "hotel_id": 2, "country_id": 1, "state_id": 1,"city_id":"2","location_id":"2","location_name":"wakad","hotel_name":"Ramyas","image_name":"hotel2.png","Price":"500","facility":"Complementry Breakfast","city_name":"Pune"},
+    { "hotel_id": 3, "country_id": 1, "state_id": 1,"city_id":"2","location_id":"3","location_name":"wakad","hotel_name":"Red Fox","image_name":"hotel3.jpg","Price":"900","facility":"Complementry Breakfast","city_name":"Pune"},
+     { "hotel_id": 4, "country_id": 1, "state_id": 2,"city_id":"3","location_id":"4","location_name":"IT Park","hotel_name":"Sangam","image_name":"hotel4.png","Price":"800","facility":"Complementry Breakfast","city_name":"Indore"}
+]
